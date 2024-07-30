@@ -1,0 +1,72 @@
+<?php } elseif ($menuName == 'Reports') { ?>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                                <i class="menu-icon tf-icons bx bx-layout"></i>
+                                                <div data-i18n="Layouts">Reports</div>
+                                            </a>
+                                            <ul class="menu-sub">
+                                                <?php foreach ($SubMenuRows as $subMenuRow) { ?>
+                                                        <?php if ($subMenuRow->SubMenus == 'Staff Absent Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Staff_Attendance/Staff_Atte') ?>" class="menu-link">
+                                                                <<div data-i18n="Without menu">Staff Absent Report</div>
+                                                            </a>
+                                                        </li>
+                                                    <?php } elseif ($subMenuRow->SubMenus == 'Student Absent Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Absent_Report') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Student Absent Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Class Incharge Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Department/get_class_incharge') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Class Incharge Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Subject Wise Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Subject/Subject_wise_report') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Subject Wise Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Course mentor Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Subject/Course_mentor') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Course mentor Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Exam Schedule Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Exam_Schedule/Exam_report') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Exam Schedule Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'HOD Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('TimeTable/HOD_REPORTS') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">HOD Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Staff Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Staff/Staff') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Staff Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Student Class Wise Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Student/Student_Class_wise') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Student Class Wise Report</div>
+                                                            </a>
+                                                        </li>
+                                                        <?php } elseif ($subMenuRow->SubMenus == 'Student Department Wise Report') { ?>
+                                                        <li class="menu-item">
+                                                        <a href="<?php echo base_url('Student/Student_Department_wise') ?>" class="menu-link">
+                                                                <div data-i18n="Without navbar">Student Department Wise Report</div>
+                                                            </a>
+                                                        </li>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
