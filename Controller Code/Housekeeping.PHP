@@ -1,0 +1,82 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Housekeeping extends CI_Controller
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->helper('file');
+        $this->load->model('Housekeeping_model');
+        $this->load->library('session');
+        $this->load->library('form_validation');
+    }
+
+
+
+
+    public function index()
+    {
+        $username = $this->session->userdata('userdata');
+        if (!empty($username) && isset($username['IsOnLogin']) && $username['IsOnLogin'] === TRUE) {
+            $data['clean_data'] = $this->Housekeeping_model->get_all_clean_data();
+            $this->load->view('Frontend/header');
+            $this->load->view('Frontend/sidebar');
+            $this->load->view('Housekeeping/Housekeeping',$data);
+            $this->load->view('Frontend/footer');
+        } else {
+            redirect('Auth', 'refresh');
+        }
+    }
+
+
+    
+
+
+public function add_Housekeeping() {
+    // Load form validation library and set rules
+
+
+    // print_r($_POST);
+    // exit;
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('Incharge_name', 'Incharge_name', 'required');
+    $this->form_validation->set_rules('Housekeeping_name', 'Housekeeping_name', 'required');
+    $this->form_validation->set_rules('Shift', 'Shift', 'required');
+    $this->form_validation->set_rules('Clean_DepartmentName', 'Get Clean_DepartmentName', 'required');
+
+    $this->form_validation->set_rules('Day', 'Day', 'required');
+    $this->form_validation->set_rules('Action', 'Action ', 'required');
+
+    if ($this->form_validation->run() == FALSE) {
+        // Validation failed, load the form again
+        $this->load->view('Housekeeping'); // replace 'your_form_view' with your form view name
+    } else {
+        // Load the model
+        $this->load->model('Housekeeping_model');
+
+        // Prepare data for insertion
+        $data = array(
+            'Incharge_name' => $this->input->post('Incharge_name'),
+            'Housekeeping_name' => $this->input->post('Housekeeping_name'),
+            'Day' => $this->input->post('Day'),
+            'Shift' => $this->input->post('Shift'),
+            'Clean_DepartmentName' => $this->input->post('Clean_DepartmentName'),
+            'Action' => $this->input->post('Action')
+        );
+
+        // Insert data into the database
+        if ($this->Housekeeping_model->add_housekeeping($data)) {
+            // Redirect to a success page
+            redirect('Housekeeping'); // Replace 'Equipments/success' with your success route
+        } else {
+            $this->load->view('Frontend/header');
+            $this->load->view('Frontend/sidebar');
+            $this->load->view('Housekeeping/Housekeeping');
+            $this->load->view('Frontend/footer');
+        }
+    }
+}}
